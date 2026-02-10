@@ -9,7 +9,6 @@ namespace DominioArticulos
 {
     public class Articulo
     {
-        // Atributos de la clase Articulo.
         public int Id { get; set; }
         public string Codigo { get; set; }
         public string Nombre { get; set; }

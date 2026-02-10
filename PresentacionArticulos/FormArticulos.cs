@@ -58,5 +58,12 @@ namespace PresentacionArticulos
             FormArticulosDetalle detalle = new FormArticulosDetalle(seleccionado);
             detalle.ShowDialog();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormArticuloAlta alta = new FormArticuloAlta();
+            alta.ShowDialog();
+            cargar();
+        }
     }
 }

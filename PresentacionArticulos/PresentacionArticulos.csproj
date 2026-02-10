@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormArticuloAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticuloAlta.Designer.cs">
+      <DependentUpon>FormArticuloAlta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArticuloAlta.resx">
+      <DependentUpon>FormArticuloAlta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormArticulos.resx">
       <DependentUpon>FormArticulos.cs</DependentUpon>
     </EmbeddedResource>
