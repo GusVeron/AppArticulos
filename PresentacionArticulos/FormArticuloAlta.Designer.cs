@@ -72,7 +72,7 @@
             this.txtImagen.Location = new System.Drawing.Point(150, 143);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(136, 22);
-            this.txtImagen.TabIndex = 22;
+            this.txtImagen.TabIndex = 3;
             // 
             // lblUrlImagen
             // 
@@ -90,7 +90,7 @@
             this.cmbCategoria.Location = new System.Drawing.Point(150, 205);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(136, 24);
-            this.cmbCategoria.TabIndex = 24;
+            this.cmbCategoria.TabIndex = 5;
             // 
             // cmbMarca
             // 
@@ -99,7 +99,7 @@
             this.cmbMarca.Location = new System.Drawing.Point(150, 171);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(136, 24);
-            this.cmbMarca.TabIndex = 23;
+            this.cmbMarca.TabIndex = 4;
             // 
             // lblMarca
             // 
@@ -121,42 +121,48 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(193, 290);
+            this.btnCancelar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(180, 288);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(93, 30);
-            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.Size = new System.Drawing.Size(106, 30);
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(56, 290);
+            this.btnAceptar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Location = new System.Drawing.Point(57, 288);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(93, 30);
-            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.Size = new System.Drawing.Size(106, 30);
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(150, 77);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(136, 22);
-            this.txtNombre.TabIndex = 18;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(150, 111);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(136, 22);
-            this.txtDescripcion.TabIndex = 20;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(150, 43);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(136, 22);
-            this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblDescripcion
             // 
@@ -190,7 +196,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(150, 235);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(136, 22);
-            this.txtPrecio.TabIndex = 32;
+            this.txtPrecio.TabIndex = 6;
             // 
             // lblPrecio
             // 
@@ -205,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 355);
+            this.ClientSize = new System.Drawing.Size(531, 340);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.btnAgregarImagen);

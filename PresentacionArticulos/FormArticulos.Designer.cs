@@ -54,7 +54,7 @@
             this.btnDetalles.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDetalles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDetalles.Location = new System.Drawing.Point(723, 495);
+            this.btnDetalles.Location = new System.Drawing.Point(715, 495);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(129, 34);
             this.btnDetalles.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.btnModificar.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.Black;
-            this.btnModificar.Location = new System.Drawing.Point(326, 495);
+            this.btnModificar.Location = new System.Drawing.Point(318, 495);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(129, 34);
             this.btnModificar.TabIndex = 2;
@@ -79,7 +79,7 @@
             this.btnAgregar.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAgregar.Location = new System.Drawing.Point(136, 495);
+            this.btnAgregar.Location = new System.Drawing.Point(128, 495);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(129, 34);
             this.btnAgregar.TabIndex = 3;
@@ -92,7 +92,7 @@
             this.btnEliminar.BackColor = System.Drawing.Color.OrangeRed;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEliminar.Location = new System.Drawing.Point(527, 495);
+            this.btnEliminar.Location = new System.Drawing.Point(519, 495);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(129, 34);
             this.btnEliminar.TabIndex = 4;
