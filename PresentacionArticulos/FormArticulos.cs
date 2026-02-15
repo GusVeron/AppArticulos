@@ -24,6 +24,9 @@ namespace PresentacionArticulos
         private void FormArticulos_Load(object sender, EventArgs e)
         {
             cargar();
+            cmbCampo.Items.Add("Nombre");
+            cmbCampo.Items.Add("Marca");
+            cmbCampo.Items.Add("Precio");
 
         }
 
@@ -64,6 +67,76 @@ namespace PresentacionArticulos
             FormArticuloAlta alta = new FormArticuloAlta();
             alta.ShowDialog();
             cargar();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            FormArticuloAlta modificar = new FormArticuloAlta(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Seguro que queres eliminar el articulo seleccionado?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.Id);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cmbCampo.SelectedItem.ToString();
+
+            if (opcion == "Precio")
+            {
+                cmbCriterio.Items.Clear();
+                cmbCriterio.Items.Add("Mayor a");
+                cmbCriterio.Items.Add("Menor a");
+                cmbCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cmbCriterio.Items.Clear();
+                cmbCriterio.Items.Add("Comienza con");
+                cmbCriterio.Items.Add("Termina con");
+                cmbCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cmbCampo.SelectedItem.ToString();
+                string criterio = cmbCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

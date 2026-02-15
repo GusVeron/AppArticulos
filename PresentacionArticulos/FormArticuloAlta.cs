@@ -27,7 +27,7 @@ namespace PresentacionArticulos
         {
             InitializeComponent();
             this.articulo = articulo;
-            Text = "Modificar Pokemon";
+            Text = "Modificar Articulo";
         }
 
         private void FormArticuloAlta_Load(object sender, EventArgs e)
@@ -43,6 +43,18 @@ namespace PresentacionArticulos
                 cmbCategoria.DataSource = negocioC.listar();
                 cmbCategoria.ValueMember = "Id";
                 cmbCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo.ToString();
+                    txtNombre.Text = articulo.Nombre.ToString();
+                    txtDescripcion.Text = articulo.Descripcion.ToString();
+                    cmbMarca.SelectedValue = articulo.Marca.Id;
+                    cmbCategoria.SelectedValue = articulo.Categoria.Id;
+                    txtImagen.Text = articulo.UrlImagen.ToString();
+                    cargarImagen(articulo.UrlImagen);
+                    txtPrecio.Text = articulo.Precio.ToString();
+                } 
             }
             catch (Exception ex)
             {
@@ -74,12 +86,34 @@ namespace PresentacionArticulos
                 articulo.UrlImagen = txtImagen.Text;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                negocio.agregar(articulo);
+                if (articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado Exitosamente!");
+                }
+                else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado Exitosamente!");
+                }
+
                 Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pxbAltaArticulo.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pxbAltaArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
     }
