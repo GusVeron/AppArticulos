@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.pxbAltaArticulo = new System.Windows.Forms.PictureBox();
             this.txtImagen = new System.Windows.Forms.TextBox();
@@ -46,17 +47,20 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pxbAltaArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregarImagen
             // 
-            this.btnAgregarImagen.Location = new System.Drawing.Point(292, 133);
+            this.btnAgregarImagen.Location = new System.Drawing.Point(292, 142);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(25, 23);
             this.btnAgregarImagen.TabIndex = 31;
             this.btnAgregarImagen.Text = "+";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // pxbAltaArticulo
             // 
@@ -104,7 +108,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(97, 174);
+            this.lblMarca.Location = new System.Drawing.Point(88, 174);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(48, 16);
             this.lblMarca.TabIndex = 28;
@@ -207,6 +211,10 @@
             this.lblPrecio.TabIndex = 33;
             this.lblPrecio.Text = "Precio:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormArticuloAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,6 +243,7 @@
             this.Text = "FormArticuloAlta";
             this.Load += new System.EventHandler(this.FormArticuloAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pxbAltaArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +269,6 @@
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

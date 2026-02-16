@@ -40,6 +40,8 @@ namespace PresentacionArticulos
                 dgvArticulos.DataSource = listaArticulos;
                 dgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 ocultarColumnas();
+
+                habilitarBotones();
             }
             catch (Exception ex)
             {
@@ -121,22 +123,84 @@ namespace PresentacionArticulos
             }
         }
 
+        private bool validarFiltro()
+        {
+
+            if (cmbCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo para filtrar!");
+                return true;
+            }
+            if (cmbCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar!");
+                return true;
+            }
+
+            if (cmbCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para numericos!");
+                    return true;
+                }
+
+                if (!(soloNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Solo numeros para filtar, por un campo numerico!");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if ((!char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+
+                if (validarFiltro())
+                {
+                    return;
+                }
+
                 string campo = cmbCampo.SelectedItem.ToString();
                 string criterio = cmbCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
 
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                habilitarBotones();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        // Validacione extras (Si no se puede seleccionar ningun campo en el dgv, los botones se desactivan, solo se puede seleccionar para agregar!).
+        private void habilitarBotones()
+        {
+            bool hayRegistros = dgvArticulos.DataSource != null && dgvArticulos.Rows.Count > 0;
+
+            btnModificar.Enabled = hayRegistros;
+            btnEliminar.Enabled = hayRegistros;
+            btnDetalles.Enabled = hayRegistros; 
         }
     }
 }

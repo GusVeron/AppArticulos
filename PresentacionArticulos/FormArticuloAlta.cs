@@ -1,6 +1,7 @@
 ﻿using DominioArticulos;
 using NegocioArticulos;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace PresentacionArticulos
 {
     public partial class FormArticuloAlta : Form
     {
         Articulo articulo = null;
+        private OpenFileDialog archivo = null;
 
         public FormArticuloAlta()
         {
@@ -78,6 +81,11 @@ namespace PresentacionArticulos
                    articulo = new Articulo();
                 }
 
+                if (validarCampos())
+                {
+                    return;
+                }
+
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
@@ -95,6 +103,11 @@ namespace PresentacionArticulos
                 {
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado Exitosamente!");
+                }
+
+                if (archivo != null && !(txtImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["ArticulosImagenes"] + archivo.SafeFileName);
                 }
 
                 Close();
@@ -116,5 +129,56 @@ namespace PresentacionArticulos
                 pxbAltaArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+
+                txtImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
+        }
+
+        // Validar campos obligatorios.
+        private bool validarCampos()
+        {
+            bool hayErrores = false;
+
+            errorProvider1.Clear();
+
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                errorProvider1.SetError(txtCodigo, "El código es obligatorio");
+                hayErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                errorProvider1.SetError(txtNombre, "El nombre es obligatorio");
+                hayErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                errorProvider1.SetError(txtPrecio, "El precio es obligatorio");
+                hayErrores = true;
+            }
+            else if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+            {
+                errorProvider1.SetError(txtPrecio, "Debe ser numérico");
+                hayErrores = true;
+            }
+            else if (precio <= 0)
+            {
+                errorProvider1.SetError(txtPrecio, "Debe ser mayor a 0");
+                hayErrores = true;
+            }
+
+            return hayErrores;
+        }
+
     }
 }
